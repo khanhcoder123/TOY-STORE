@@ -1,0 +1,70 @@
+/* public/css/custom.css */
+
+/* Đặt style cho phần toy-manager */
+.toy-manager {
+    padding: 20px;
+  }
+  
+  /* Đặt style cho các sản phẩm trong danh sách */
+  .product-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .product-item img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .product-item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .product-item p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  /* Đặt style cho các nút trong trang web */
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+  }
+  
+  /* Đặt style cho footer */
+  .footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Đặt style cho biểu tượng mạng xã hội */
+  .social-icon {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .social-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  

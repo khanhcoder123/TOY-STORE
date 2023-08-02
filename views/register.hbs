@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToyLand - Đăng ký</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <!-- Header (Nếu cần) -->
+    <header class="header">
+        <!-- ... (Nội dung header nếu có) ... -->
+    </header>
+
+    <!-- Signup Section -->
+    <section class="signup">
+        <div class="container">
+            <h2>Đăng ký</h2>
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </div>
+            </form>
+            <p>Đã có tài khoản? <a href="/login">Đăng nhập ngay</a></p>
+        </div>
+    </section>
+
+    <!-- Footer (Nếu cần) -->
+    <footer class="footer">
+        <!-- ... (Nội dung footer nếu có) ... -->
+    </footer>
+</body>
+</html>
