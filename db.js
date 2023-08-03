@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 const mongoURI = 'mongodb+srv://khanhnqbh00114:khanh123@cluster0.m27xh35.mongodb.net/'; // Replace with your MongoDB connection URL
 const dbName = 'products'; // Replace with your database name
@@ -19,7 +19,10 @@ const connectToDatabase = async () => {
 };
 
 const getDatabase = () => {
+  if (!db) {
+    throw new Error('Database not connected. Call connectToDatabase first.');
+  }
   return db;
 };
 
-module.exports = { connectToDatabase, getDatabase };
+module.exports = { connectToDatabase, getDatabase, ObjectId };

@@ -119,7 +119,7 @@ app.post('/add', async (req, res) => {
   const { name, price, image, description } = req.body;
   try {
     const newItem = await createProduct({ name, price: parseFloat(price), image, description });
-    res.redirect('/');
+    res.redirect('/toy-manager');
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -156,7 +156,7 @@ app.post('/delete/:_id', async (req, res) => {
   const { _id } = req.params;
   try {
     await deleteProduct(_id);
-    res.json({ message: 'Product deleted successfully' });
+    res.redirect('/toy-manager')
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

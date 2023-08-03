@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
     <link rel="stylesheet" href="style.css">
-
-
 </head>
 
 <body>
@@ -27,7 +25,7 @@
             </nav>
         </div>
     </header>
-  <section class="user-actions">
+    <section class="user-actions">
         <div class="container">
             <div class="user-buttons">
                 <!-- Sử dụng handlebars để hiển thị email nếu đã đăng nhập -->
@@ -42,7 +40,6 @@
             </div>
         </div>
     </section>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -51,7 +48,6 @@
             <a href="/toy-manager" class="btn btn-primary">Xem ngay</a>
         </div>
     </section>
-
     <!-- Featured Products Section -->
     <section class="featured-products">
         <div class="container">
@@ -60,7 +56,9 @@
                 {{#each featuredProducts}}
                 <!-- Hiển thị các sản phẩm nổi bật với hình ảnh, tên và giá cả -->
                 <div class="product-item">
-                    <img src="{{image}}" alt="{{name}}">
+                    <a href="/product/{{_id}}"> <!-- Thêm liên kết đến trang view sản phẩm với id của sản phẩm -->
+                        <img src="{{image}}" alt="{{name}}">
+                    </a>
                     <h3>{{name}}</h3>
                     <p>Giá: {{price}}</p>
                 </div>
@@ -68,7 +66,6 @@
             </div>
         </div>
     </section>
-
     <!-- About Us Section -->
     <section class="about-us" id="about">
         <div class="container">
@@ -79,7 +76,6 @@
                 kiếm những món quà thú vị cho con trẻ.</p>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -92,7 +88,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
