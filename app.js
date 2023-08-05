@@ -213,6 +213,41 @@ app.get('/view/:productId', async (req, res) => {
   }
 });
 
+app.get('/cart', (req, res) => {
+  const { user } = req.session;
+  const cart = user.cart || {};
+  
+  res.render('cart', { cart });
+});
+
+app.post('/cart/:productId', async (req, res) => {
+  const { productId } = req.params;
+  const { quantity } = req.body;
+
+  // Retrieve the product from the database
+  const product = await getProductById(productId);
+
+  if (!product) {
+    return res.status(404).json({ message: 'Product not found' });
+  }
+
+  // Get the user's cart from the session
+  const { user } = req.session;
+  const cart = user.cart || {};
+
+  // Add the product to the cart or update the quantity if it already exists
+  if (cart[productId]) {
+    cart[productId].quantity += parseInt(quantity);
+  } else {
+    cart[productId] = { product, quantity: parseInt(quantity) };
+  }
+
+  // Update the user's session
+  req.session.user = { ...user, cart };
+
+  res.redirect('/toy-manager');
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
