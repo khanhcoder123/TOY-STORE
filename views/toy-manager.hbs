@@ -54,15 +54,15 @@
       </nav>
     </div>
   </header>
-<form action="/search" method="post">
-  <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
-  <button type="submit">Tìm kiếm</button>
-</form>
+  <form action="/search" method="post">
+    <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
+    <button type="submit">Tìm kiếm</button>
+  </form>
 
   <table>
     <thead>
       <tr>
-        <th>ID</th>
+        <th hidden>ID</th>
         <th>Name</th>
         <th>Price</th>
         <th>Image</th>
@@ -72,22 +72,22 @@
       </tr>
     </thead>
     <tbody>
-       {{#each products}}
-    <tr>
-      <td>{{_id}}</td>
-      <!-- Sử dụng liên kết để chuyển đến trang chi tiết sản phẩm -->
-      <td><a href="/product/{{_id}}">{{name}}</a></td>
-      <td>{{price}}</td>
-      <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
-      <td>{{description}}</td>
-      <td><a href="/edit/{{_id}}">Edit</a></td>
-      <td>
-        <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
-          <button type="submit">Delete</button>
-        </form>
-      </td>
-    </tr>
-    {{/each}}
+      {{#each products}}
+      <tr>
+        <td hidden>{{_id}}</td>
+        <!-- Sử dụng liên kết để chuyển đến trang chi tiết sản phẩm -->
+        <td><a href="/product/{{_id}}">{{name}}</a></td>
+        <td>{{price}}</td>
+        <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
+        <td>{{description}}</td>
+        <td><a href="/edit/{{_id}}">Edit</a></td>
+        <td>
+          <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
     </tbody>
   </table>
   <a href="/new">Add New Toy</a>
@@ -125,11 +125,11 @@
     </div>
   </section>
   <script>
-function confirmDelete(productName) {
-  // Show a confirmation dialog before submitting the delete form
-  return confirm(`Are you sure you want to delete ${productName}?`);
-}
-</script>
+    function confirmDelete(productName) {
+      // Show a confirmation dialog before submitting the delete form
+      return confirm(`Are you sure you want to delete ${productName}?`);
+    }
+  </script>
 </body>
 
 </html>
