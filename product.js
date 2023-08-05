@@ -28,8 +28,12 @@ async function createProduct(item) {
 // Hàm lấy thông tin sản phẩm theo ID
 async function getProductById(productId) {
   const db = await getDatabase();
-  return db.collection(collectionName).findOne({ _id: ObjectId(productId) });
+  console.log('Searching for product with _id:', productId);
+  const product = await db.collection(collectionName).findOne({ _id: productId });
+  console.log('Product found:', product);
+  return product;
 }
+
 
 // Hàm lấy thông tin sản phẩm theo tên
 async function getProductByName(name) {
@@ -42,7 +46,7 @@ async function getProductByName(name) {
 async function updateProduct(productId, newData) {
   const db = await getDatabase();
   const result = await db.collection(collectionName).updateOne(
-    { _id: ObjectId(productId) },
+    { _id: productId },
     { $set: newData }
   );
   return result;

@@ -132,15 +132,17 @@ app.get('/new', (req, res) => {
 // ...
 
 // Route for editing a product (GET request)
-app.get('/edit/:id', async (req, res) => {
-  const { id } = req.params;
+// Route for editing a product (GET request)
+app.get('/edit/:_id', async (req, res) => {
+  const { _id } = req.params; // Sửa đổi ở đây
   try {
-    const product = await getProductById(id);
+    const product = await getProductById(_id);
     res.render('edit', { product });
   } catch (err) {
     res.status(404).json({ message: 'Product not found' });
   }
 });
+
 
 // Route for updating a product (POST request)
 app.post('/edit/:id', async (req, res) => {
