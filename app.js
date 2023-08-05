@@ -129,6 +129,9 @@ app.get('/new', (req, res) => {
   res.render('new');
 });
 
+// ...
+
+// Route for editing a product (GET request)
 app.get('/edit/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -139,16 +142,20 @@ app.get('/edit/:id', async (req, res) => {
   }
 });
 
+// Route for updating a product (POST request)
 app.post('/edit/:id', async (req, res) => {
   const { id } = req.params;
   const { name, price, image, description } = req.body;
   try {
     await updateProduct(id, { name, price: parseFloat(price), image, description });
-    res.redirect('/');
+    res.redirect('/homepage'); // Chuyển về trang chủ sau khi cập nhật
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
+
+// ...
+
 
 // ... (previous code)
 
@@ -170,15 +177,40 @@ app.get('/toy-manager', async (req, res) => {
   res.render('toy-manager', { products: items });
 });
 
-app.post('/search', async (req, res) => {
-  const { query } = req.body;
+// Tạo tuyến đường cho việc tìm kiếm sản phẩm
+app.get('/search', async (req, res) => {
+  const { query } = req.query;
   try {
+    if (typeof query !== 'string') {
+      return res.status(400).json({ message: 'Invalid search query' });
+    }
+
     const items = await searchProducts(query);
     res.render('toy-manager', { products: items });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
+
+
+
+
+
+// Route for viewing a product by ID
+app.get('/view/:productId', async (req, res) => {
+  const { productId } = req.params;
+  try {
+    const product = await getProductById(productId);
+    if (product) {
+      res.render('view', { product });
+    } else {
+      res.status(404).json({ message: 'Product not found' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Error retrieving product' });
+  }
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

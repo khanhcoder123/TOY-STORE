@@ -53,7 +53,11 @@ async function deleteProduct(productId) {
   const result = await db.collection(collectionName).deleteOne({ _id: productId });
   return result;
 }
-
+async function searchProducts(query) {
+  const db = await getDatabase();
+  const products = await db.collection(collectionName).find({ name: { $regex: query, $options: 'i' } }).toArray();
+  return products;
+}
 
 module.exports = {
   getProducts,
@@ -61,4 +65,5 @@ module.exports = {
   getProductById,
   updateProduct,
   deleteProduct,
+  searchProducts,
 };

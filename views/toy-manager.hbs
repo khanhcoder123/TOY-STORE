@@ -54,6 +54,10 @@
       </nav>
     </div>
   </header>
+<form action="/search" method="post">
+  <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
+  <button type="submit">Tìm kiếm</button>
+</form>
 
   <table>
     <thead>
@@ -68,23 +72,22 @@
       </tr>
     </thead>
     <tbody>
-      {{#each products}}
-      <tr>
-        <td>{{_id}}</td>
-        <td><a href="/view{{_name}}"></a>{{name}}</td>
-        <td>{{price}}</td>
-        <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
-        <td>{{description}}</td>
-        <td><a href="/edit/{{_id}}">Edit</a></td>
-        <td>
-          <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
-            <button type="submit">Delete</button>
-          </form>
-
-          </form>
-        </td>
-      </tr>
-      {{/each}}
+       {{#each products}}
+    <tr>
+      <td>{{_id}}</td>
+      <!-- Sử dụng liên kết để chuyển đến trang chi tiết sản phẩm -->
+      <td><a href="/product/{{_id}}">{{name}}</a></td>
+      <td>{{price}}</td>
+      <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
+      <td>{{description}}</td>
+      <td><a href="/edit/{{_id}}">Edit</a></td>
+      <td>
+        <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
     </tbody>
   </table>
   <a href="/new">Add New Toy</a>
