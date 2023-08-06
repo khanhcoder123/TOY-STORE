@@ -53,11 +53,9 @@ app.post('/register', async (req, res) => {
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'Name, email, and password are required' });
   }
-
   try {
     // Insert the new user data into the "users" collection in MongoDB
     const user = await getDatabase().collection('users').insertOne({ name, email, password });
-
     // Redirect to the login page after successful registration
     res.redirect('/login');
   } catch (err) {
@@ -73,9 +71,7 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-// Route for user login (POST request)
-// Route for user login (POST request)
-// Route for user login (POST request)
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -85,18 +81,13 @@ app.post('/login', async (req, res) => {
   }
 
   try {
-    // Find the user in the "users" collection based on the provided email
     const user = await getDatabase().collection('users').findOne({ email });
 
-    // If the user is not found or the password is incorrect, respond with an error
     if (!user || user.password !== password) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Save the user data in the session
     req.session.user = user;
-
-    // If the user exists and the credentials are correct, you can redirect the user to a dashboard page
     res.redirect('/homepage'); // Replace '/dashboard' with the actual dashboard page route
   } catch (err) {
     console.error('Error logging in:', err);
