@@ -68,7 +68,7 @@
     height: 30px;
   }
   .product-render {
-  max-width: 350px;
+  max-width: 250px;
   width: 100%;
   margin: 25px;
   border: 1px solid #ccc;
@@ -82,7 +82,8 @@
 
 .product-render img {
   max-width: 100%;
-  height: auto;
+  height: 140px;
+  object-fit: cover;
   border-radius: 5px 5px 0 0;
 }
 

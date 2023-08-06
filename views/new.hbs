@@ -1,73 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Toy - ToyLand</title>
-    <link rel="stylesheet" href="new.css">
-    <!-- Thêm liên kết đến Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Add the following link tags in the head section of your HTML -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/new">
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="main-nav">
-                <ul>
-                    <img style="height: 64px; width: 100px; "  src="logo3.jpg" alt="ToyLand Logo" class="logo">
-                    <li><a href="/homepage">Trang chủ</a></li>
-                    <li><a href="/shop">Cửa hàng</a></li>
-                    <li><a href="/categories">Danh mục</a></li>
-                    <li><a href="/about">Giới thiệu</a></li>
-                    <li><a href="/contact">Liên hệ</a></li>
-                    <li><a href="/cart">Giỏ hàng</a></li>
-                </ul>
-            </nav>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="main-nav">
+        <ul>
+          <img style="height: 64px; width: 100px; " src="logo3.jpg" alt="ToyLand Logo" class="logo">
+          <li><a href="/homepage">Trang chủ</a></li>
+          <li><a href="/toy-manager">Cửa hàng</a></li>
+          <li><a href="#categories">Danh mục</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+          <li><a href="#cart">Giỏ hàng</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <form action="/search" method="post">
+    <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
+    <button type="submit">Tìm kiếm</button>
+  </form>
+  <br>
+  <section class="add-new-toy">
+    <div class="container">
+      <h2>Add New Toy</h2>
+      <form action="/add" method="POST" class="form-inline">
+        <div class="form-group mb-2">
+          <label for="name" class="col-form-label mr-2">Toy Name:</label>
+          <input type="text" id="name" name="name" class="form-control" required>
         </div>
-    </header>
-    
-    <!-- Add New Toy Form -->
-    <section class="add-new-toy">
-        <div class="container">
-            <h2>Add New Toy</h2>
-            <form action="/add" method="POST"> <!-- Update the form action to point to the correct server route -->
-                <div class="form-group">
-                    <label for="name">Toy Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="image">Image URL:</label>
-                    <input type="text" id="image" name="image" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Add Toy</button>
-                </div>
-            </form>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="price" class="col-form-label mr-2">Price:</label>
+          <input type="number" id="price" name="price" step="0.01" class="form-control" required>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 ToyLand. All rights reserved.</p>
-            <div class="social-links">
-                <!-- Add any social media icons and links here if needed -->
-            </div>
+        <div class="form-group mb-2">
+          <label for="image" class="col-form-label mr-2">Image URL:</label>
+          <input type="text" id="image" name="image" class="form-control" required>
         </div>
-    </footer>
+        <div class="form-group mb-2">
+          <label for="description" class="col-form-label mr-2">Description:</label>
+          <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Add Toy</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- Thêm liên kết đến jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Link to Bootstrap JS and jQuery (for Bootstrap functionality) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Thêm liên kết đến Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 ToyLand. All rights reserved.</p>
+      <div class="social-links">
+        <!-- Các biểu tượng mạng xã hội -->
+        <a href="#" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+        <a href="#" class="social-icon"><img src="twitter.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toy Manager Section -->
+  <section class="toy-manager">
+    <div class="container">
+      <!-- Add the content from toy-manager.hbs here -->
+    </div>
+  </section>
+  <script>
+    function confirmDelete(productName) {
+      // Show a confirmation dialog before submitting the delete form
+      return confirm(`Are you sure you want to delete ${productName}?`);
+    }
+  </script>
 </body>
+
 </html>
