@@ -12,7 +12,7 @@
   <style>
     table {
       border-collapse: collapse;
-      width: 100%;
+      width: 80%;
     }
 
     th,
@@ -33,17 +33,42 @@
     tr:hover {
       background-color: #ddd;
     }
+
+    .card {
+      display: flex;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      width: 20%;
+      border-radius: 5px;
+
+
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      border-radius: 5px 5px 5px 5px;
+    }
+
+    .container {
+
+      padding: 2px 16px;
+    }
   </style>
-  </style>
+
 </head>
 
 <body>
+
+
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <img src="logo.png" alt="ToyLand Logo" class="logo">
       <nav class="main-nav">
         <ul>
+          <img style="height: 64px; width: 100px; " src="logo3.jpg" alt="ToyLand Logo" class="logo">
           <li><a href="/homepage">Trang chủ</a></li>
           <li><a href="/toy-manager">Cửa hàng</a></li>
           <li><a href="#categories">Danh mục</a></li>
@@ -58,39 +83,27 @@
     <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
     <button type="submit">Tìm kiếm</button>
   </form>
-
-  <table>
-    <thead>
-      <tr>
-        <th hidden>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Image</th>
-        <th>Description</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each products}}
-      <tr>
-        <td hidden>{{_id}}</td>
-        <!-- Sử dụng liên kết để chuyển đến trang chi tiết sản phẩm -->
-        <td><a href="/product/{{_id}}">{{name}}</a></td>
-        <td>{{price}}</td>
-        <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
-        <td>{{description}}</td>
-        <td><a href="/edit/{{_id}}">Edit</a></td>
-        <td>
+  <br>
+  <div class="card">
+    {{#each products}}
+    <div class="product-render">
+        <img src="{{image}}" alt="{{name}}" style="width:100%">
+        <div class="container">
+          <h4><b>{{name}}</b></h4>
+          <p>Price: {{price}}</p>
+          <p>Description: {{description}}</p>
+          <a href="/edit/{{_id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
+          <br>
           <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
-            <button type="submit">Delete</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
           </form>
-        </td>
-      </tr>
+        </div>
+      </div>
       {{/each}}
-    </tbody>
-  </table>
-  <a href="/new">Add New Toy</a>
+  </div>
+
+  <br>
+  <a href="/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add New Toy</a>
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
