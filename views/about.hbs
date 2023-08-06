@@ -79,33 +79,15 @@
       </nav>
     </div>
   </header>
-  <form action="/search" method="post">
-    <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
-    <button type="submit">Tìm kiếm</button>
-  </form>
-  <br>
-  <div class="card">
-    {{#each products}}
-    <div class="product-render">
-        <img src="{{image}}" alt="{{name}}" style="width:100%">
-        <div class="container">
-          <h4><b>{{name}}</b></h4>
-          <p>Price: {{price}}</p>
-          <p>Description: {{description}}</p>
-          <div class="action">
-          
-          <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
-          <a href="/edit/{{_id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
-        </div>
-        </div>
-      </div>
-      {{/each}}
-  </div>
-
-  <br>
-  <a href="/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add New Toy</a>
+    <!-- Introduction Section -->
+  <section class="introduction">
+    <div class="container">
+      <h2>Giới Thiệu</h2>
+      <p>Chào mừng bạn đến với ToyLand - Cửa hàng đồ chơi trực tuyến hàng đầu! Chúng tôi tự hào là địa điểm lý tưởng cho các sản phẩm đồ chơi phong phú và đa dạng.</p>
+      <p>Với một bộ sưu tập đồ chơi đa dạng từ các thương hiệu uy tín, chúng tôi cam kết mang lại cho bạn những trải nghiệm mua sắm thú vị và hấp dẫn.</p>
+      <p>Hãy khám phá ngay hôm nay và tạo ra những khoảnh khắc vui vẻ cùng các sản phẩm đồ chơi tại ToyLand!</p>
+    </div>
+  </section>
 
   <!-- Contact Section -->
   <section class="contact" id="contact">

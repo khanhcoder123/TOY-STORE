@@ -179,20 +179,7 @@ app.get('/toy-manager', async (req, res) => {
   res.render('toy-manager', { products: items });
 });
 
-// Tạo tuyến đường cho việc tìm kiếm sản phẩm
-app.get('/search', async (req, res) => {
-  const { query } = req.query;
-  try {
-    if (typeof query !== 'string') {
-      return res.status(400).json({ message: 'Invalid search query' });
-    }
 
-    const items = await searchProducts(query);
-    res.render('toy-manager', { products: items });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
 
 
 
@@ -212,7 +199,9 @@ app.get('/view/:productId', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving product' });
   }
 });
-
+app.get('/about', (req, res) => {
+  res.render('about');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
