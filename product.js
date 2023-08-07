@@ -2,7 +2,7 @@
 
 const { getDatabase, ObjectId } = require('./db');
 
-const collectionName = 'toys';
+const collectionName = 'toy';
 
 // Hàm tạo ID tùy chỉnh
 function generateCustomId() {
@@ -59,7 +59,7 @@ async function deleteProduct(productId) {
 }
 async function searchProducts(query) {
   const db = await getDatabase();
-  const products = await db.collection(collectionName).find({ name: { $regex: query, $options: 'i' } }).toArray();
+  const products = await db.collection(collectionName).find({ name: new RegExp(query, 'i') }).toArray();
   return products;
 }
 
