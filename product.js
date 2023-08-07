@@ -2,7 +2,7 @@
 
 const { getDatabase, ObjectId } = require('./db');
 
-const collectionName = 'toy';
+const collectionName = 'toys';
 
 // Hàm tạo ID tùy chỉnh
 function generateCustomId() {

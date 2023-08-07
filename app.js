@@ -190,9 +190,20 @@ app.get('/view/:productId', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving product' });
   }
 });
+//search
 app.get('/about', (req, res) => {
   res.render('about');
 });
+app.get('/search', async (req, res) => {
+  const query = req.query.q; // Get the search query from the query parameter
+  try {
+    const searchResults = await searchProductsByName(query);
+    res.render('toy-manager', { searchResults, query });
+  } catch (err) {
+    res.status(500).json({ message: 'Error searching for products' });
+  }
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

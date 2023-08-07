@@ -79,10 +79,12 @@
       </nav>
     </div>
   </header>
-  <form action="/search" method="post">
-    <input type="text" name="query" placeholder="Tìm kiếm theo tên sản phẩm...">
-    <button type="submit">Tìm kiếm</button>
-  </form>
+  <form action="/search" method="get">
+  <input type="text" name="q" placeholder="Tìm kiếm theo tên sản phẩm...">
+  <button type="submit">Tìm kiếm</button>
+</form>
+
+
   <br>
   <div class="card">
     {{#each products}}

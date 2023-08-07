@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToyLand - Kết quả tìm kiếm</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Add the following link tags in the head section of your HTML -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/custom.css">
+  <style>
+    /* Your custom styles for search results page here */
+  </style>
+</head>
+
+<body>
+  <!-- Header section - similar to your other pages -->
+
+  <div class="container">
+    <h1>Kết quả tìm kiếm cho "{{ query }}"</h1>
+    {{#if products.length}}
+      <div class="card-deck">
+        {{#each products}}
+          <div class="card">
+            <img src="{{image}}" class="card-img-top" alt="{{name}}">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <p class="card-text">Price: {{price}}</p>
+              <p class="card-text">Description: {{description}}</p>
+              <a href="/view/{{_id}}" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p>No products found matching your search query.</p>
+    {{/if}}
+  </div>
+
+  <!-- Contact and Footer sections - similar to your other pages -->
+
+</body>
+
+</html>
